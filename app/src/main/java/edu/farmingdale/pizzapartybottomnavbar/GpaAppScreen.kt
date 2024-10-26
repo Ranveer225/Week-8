@@ -39,7 +39,6 @@ fun GpaAppScreen() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         TextField(
             value = grade1,
             onValueChange = { grade1 = it },
@@ -49,7 +48,6 @@ fun GpaAppScreen() {
             label = { Text("Course 1 Grade") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
-
         TextField(
             value = grade2,
             onValueChange = { grade2 = it },
@@ -59,7 +57,6 @@ fun GpaAppScreen() {
             label = { Text("Course 2 Grade") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
-
         TextField(
             value = grade3,
             onValueChange = { grade3 = it },
@@ -69,13 +66,11 @@ fun GpaAppScreen() {
             label = { Text("Course 3 Grade") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
-
         Button(onClick = {
             if (btnLabel == "Compute GPA") {
                 val gpaVal = calGPA(grade1, grade2, grade3)
                 if (gpaVal != null) {
                     gpa = gpaVal.toString()
-
                     // Change background color based on GPA
                     backColor = when {
                         gpaVal < 60 -> Color.Red
@@ -104,13 +99,11 @@ fun GpaAppScreen() {
         }
     }
 }
-
-// Function to calculate GPA
 fun calGPA(grade1: String, grade2: String, grade3: String): Double? {
     return try {
         val grades = listOf(grade1.toDouble(), grade2.toDouble(), grade3.toDouble())
         grades.average()
     } catch (e: NumberFormatException) {
-        null // Handle invalid input gracefully
+        null
     }
 }
